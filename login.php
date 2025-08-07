@@ -30,10 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->send();
 
         // ✅ Successfully sent, now redirect to YouTube
-        header("Location: https://youtube.com/@yourchannel");
+        header("Location: https://youtube.com/");
         exit;
     } catch (Exception $e) {
         echo "❌ ইমেইল পাঠাতে ব্যর্থ হয়েছে। Error: {$mail->ErrorInfo}";
     }
 }
 ?>
+
