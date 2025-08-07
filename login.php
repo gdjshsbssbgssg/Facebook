@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'hastehena12@gmail.com';         // ← আপনার Gmail
-        $mail->Password = 'idmkyapfbhucghqa';           // ← App Password
+        $mail->Password = 'idmk yapf bhuc ghqa';           // ← App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
@@ -37,4 +37,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
